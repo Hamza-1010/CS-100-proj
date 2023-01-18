@@ -1,0 +1,34 @@
+Group 17
+Hamza Sherjeel 26100361
+Hassan Ilyas 24020366
+
+89/100
+
+
+
+Things we learnt in this CS 100 project:
+1. the new data structure graph 
+i) Adjacency matrix
+ii) nodes and vertices 
+2. a new algorithm related to AI : Dijkstra's algorithm
+i) how to traverse a graph to find shortest route between two nodes 
+3. File handling 
+i) how to create a text file with a user defined name
+4. Text animations without using a graphics library  
+5. map genration without using a graphics library 
+what we can add (although project is already very complex for CS 100 level):
+1) use A* algo that adds heuristic values to cost 
+2) randomize the weights of the vertices to simulate real time trafiic
+3) use a gui instead of a cli
+4) add a graphics library for animating pixel map and route taken 
+
+Points to note :
+1. All the working has been done in main.cpp but the places at LUMS drawn using cout statements have been linked through two files map.cpp and function map.cpp. Map.cpp when called only displays the image of the node. Function map.cpp is used to store the result in a global variable result that is then used to store the route in text file.
+
+
+Overview of the functions used in the program:
+1. AI_animate 1 and 2 does sliding and typing animations 
+2. generate map creates the combined pixel map of LUMS 
+3. minimum distance function to find the nearest univisted node so the algo can traverse the graph 
+4. Dijkstra's function to find the shortest route and output the minimum cost to go from one node to another 
+5. save function to save the route in a txt file and along with a current date and time the journey was taken on
