@@ -3,6 +3,7 @@
 
 #include<iostream> 
 #include<fstream>
+#include<iomanip>
 #include<Windows.h>//for sleep function
 #include<stdlib.h>//for clear screen function
 #include"map.cpp"//linking map file 
@@ -77,9 +78,6 @@ void dijkstras(string start,string end,int source,int ending,int vertex[][25]){/
     }
     distance[source]=0; // source node as distance 0 as no cost from going to same node 
     
-    
-    string name[25]={"parking lot","cricket ground","aquatic centre","M1","M2","M3","M4","M7","tennis court","sports complex","SDSB","M5","M6","Power generators","REDC","Mosque","F1","F2","F3","F4","SSE","PDC","HSS","SAHSOL","Library"};
-
      
      
      for(int x = 0; x<25; x++)                           
@@ -95,7 +93,7 @@ void dijkstras(string start,string end,int source,int ending,int vertex[][25]){/
             // if the sum of cost and distance to adjacent node is less than current distance to node, then update node
             if(vertex[m][i]!=INF  && distance[m]+vertex[m][i]<distance[i]){ //first condition checks if it is an adjacent node second check if going from m node to ith node is actually a shorter path
                 distance[i]=distance[m]+vertex[m][i];
-                    route[x][i] = name[i];
+                    route[x][i] = names[i];
 
                 
                 
@@ -134,7 +132,7 @@ void dijkstras(string start,string end,int source,int ending,int vertex[][25]){/
      
    
     cout<<endl<<endl<<endl;
-    AI_animate_1("The min distance required to traverse from ");
+    AI_animate_1("The min distance (or in this case the number of hops from one node to the other) required to traverse from ");
     cout<<start;
     AI_animate_1(" to ");
     cout<<end<<"";
@@ -303,8 +301,8 @@ void save(){//saves output of code in a text file with user specified name given
 
 
 int main (){
-    string L = "LUMS Directions";
-    AI_animate_2(L);
+    
+    AI_animate_2("LUMS Directions");
     cout<<endl<<endl;
     cout<<endl;
     AI_animate_1("Hey, if you are feeling a bit lost at LUMS, don't worry, this  program is here to help !\n");
@@ -312,10 +310,12 @@ int main (){
     AI_animate_1("Map generation in progress....................\n ");
     cout<<endl;
     generate_map();
+    cout<<"\n";
     AI_animate_1("All the significant places at LUMS are listed for you so you can input your location. PLease consult the pixel map for exact location \n\n\n");
     
     for(int x =0;x<size1;x++){
-        cout<<names[x]<<"\n";
+        AI_animate_1(names[x]);
+        cout<<"\n";
         
     }
     cout<<"\n\n\n";
