@@ -1,4 +1,6 @@
 
+
+
 #include<iostream> 
 #include<fstream>
 #include<Windows.h>//for sleep function
@@ -12,7 +14,7 @@
 using namespace std;
 string result = "";
 string names[25]={"parking lot","cricket ground","aquatic centre","M1","M2","M3","M4","M7","tennis court","sports complex","SDSB","M5","M6","Power generators","REDC","Mosque","F1","F2","F3","F4","SSE","PDC","HSS","SAHSOL","Library"};
-
+int size1 = sizeof(names)/sizeof(names[0]);
 void AI_animate_1(string str){ // creates a dynamic animation of word
     string cat ="";
     for(int x= 0;x<str.length();x++){
@@ -55,9 +57,9 @@ int minimum_distance(int distance[], bool visited[]) // finding nearest unvisite
 
 
 
-/* parking lot > 4   cricket ground >4    aquatic centre
+/* parking lot > 2   cricket ground >2    aquatic centre
 M1 M2 ^1 M3 M4 >1  ^1 M7 >1 tennis court>2  ^1 sports complex >1  SDSB
-M5 ^1 >0.5   M6  >1  ^1 Power generators >2       REDC  >2       ^1 mosque >1 F1>0.5 F2
+M5 ^1 >0.5   M6  >1  ^1 Power generators >2       REDC  >2       ^1 mosque >1 F1>0.5 F2   *** map used to model cost matrix
 ^1 SSE >2           ^1 PDC  >2                HSS  >2       ^1 Library^1
                                         ^1 SAHSOL      ^1 F3 F4 
 */
@@ -98,18 +100,7 @@ void dijkstras(string start,string end,int source,int ending,int vertex[][25]){/
                 
                 
             }
-            // else{ // trying to eliminate node that is not part of shortest route :(
-                
-            //     for(int z=0;z<25;z++){
-            //         if(route[x][z]==name[i]){
-            //             route[x][z]=="";
-            //             }
-            //         }
-                
-            // }
-    
-                
-                //cout<<route[ending][k]<<endl;
+            
     
             }
             cout<<endl;
@@ -128,7 +119,6 @@ void dijkstras(string start,string end,int source,int ending,int vertex[][25]){/
          for(int i =0; i<25; i++){
              cout<<route[x][i];
             
-
         }
         
         cout<<endl;
@@ -317,11 +307,19 @@ int main (){
     AI_animate_2(L);
     cout<<endl<<endl;
     cout<<endl;
-    AI_animate_1("Hey, if you are feeling a bit lost at LUMS, don't worry, this  program is here to help !");
+    AI_animate_1("Hey, if you are feeling a bit lost at LUMS, don't worry, this  program is here to help !\n");
     cout<<endl<<endl;
     AI_animate_1("Map generation in progress....................\n ");
     cout<<endl;
     generate_map();
+    AI_animate_1("All the significant places at LUMS are listed for you so you can input your location. PLease consult the pixel map for exact location \n\n\n");
+    
+    for(int x =0;x<size1;x++){
+        cout<<names[x]<<"\n";
+        
+    }
+    cout<<"\n\n\n";
+
     AI_animate_1("Please enter your current location in LUMS \n");
     string current_location;
     getline(cin,current_location);
@@ -381,6 +379,7 @@ int main (){
             num_end =q;
         }
     }
+    const int INF = 1000;
     int vertex [25][25]={
     {0,2,5,1,1,1,1,1,3,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF},
     {2,0,1,2,1,2,2,1,1,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF},
@@ -406,7 +405,7 @@ int main (){
     {INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,1,INF,INF,INF,INF,INF,INF,1,0,1,INF,INF},
     {INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,1,INF,INF,INF,INF,INF,INF,1,0,1,1},
     {INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,1,0,1},
-    {INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,1,1,1,1,1,INF,INF,1,1,0}};//adjacency matrix to store values of edges to each node
+    {INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,INF,1,1,1,1,1,INF,INF,1,1,0}};//adjacency/cost matrix to store values of edges to each node
     
     
     dijkstras(current_location,final_location,num_start,num_end,vertex);
