@@ -1,7 +1,7 @@
 
 
 Points to note :
-1. All the working has been done in main.cpp but the places at LUMS drawn using cout statements have been linked through two files map.cpp and function map.cpp. Map.cpp when called only displays the image of the node. Function map.cpp is used to store the result in a global variable result that is then used to store the route in text file.
+1. All the working has been done in main.cpp but the places at LUMS drawn using cout statements have been linked through two files map.cpp and function map.cpp. Map.cpp when called only displays the image of the node. Function map.cpp is used to store the result in a global variable result that is then used to store the route in text file.Pixel_map.cpp has the code to display the pixel map of LUMS.
 
 
 Overview of the functions used in the program:
